@@ -1,0 +1,38 @@
+{
+  "name": "EMAIL Extension",
+  "description": "API key for mail service is required",
+  "version": "1.0",
+  "manifest_version": 3,
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://localhost:8080/*",
+    "*://mail.google.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://mail.google.com/*"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "action": {
+    "default_title": "EMAIL Extension",
+    "default_popup": "hello.html",
+    "default_icon": "hello_extensions.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["icons/*"],
+      "matches": ["*://mail.google.com/*"]
+    },
+    {
+      "resources": ["dynamic/*"],   
+      "matches": ["*://mail.google.com/*"],
+      "use_dynamic_url": true
+    }
+  ]
+}
